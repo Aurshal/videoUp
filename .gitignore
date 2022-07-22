@@ -1,5 +1,5 @@
-upload/*.mp4
-upload/*.mkv
+upload/*
+upload/*
 ### Flask ###
 instance/*
 !instance/.gitignore
