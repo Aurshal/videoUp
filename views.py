@@ -5,6 +5,7 @@ from app import  app
 from database import db,UploadedVideo
 from utitlies import allowed_file
 @app.route('/upload', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_videos():
     videos = UploadedVideo.query.all()
     return render_template('form.html', videos = videos)
@@ -61,6 +62,7 @@ def get_charges():
     return {"message":"data out of range"}
 
 
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
