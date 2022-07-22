@@ -1,0 +1,28 @@
+  {% extends 'base.html' %}
+  {% block content %}
+  <div >
+        <h1 id="header">Upload your video</h1>
+         {% with messages = get_flashed_messages(with_categories = True) %}
+          {% if messages %}
+            <ul class="list-group">
+            {% for category,message in messages %}
+              {% if category == 'error' %}
+                <li class="list-group-item bg-danger text-white">{{ message }}</li>
+              {% elif category == 'success' %}
+                <li class="list-group-item bg-success text-white">{{ message }}</li>
+              {% endif %}
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="formFileLg" class="form-label"></label>
+            <input class="form-control form-control-lg" id="formFileLg" type="file" name="video">
+            <input class="btn btn-primary mt-2" type="submit" value="Upload">
+            <input type="hidden" id = "duration" name = "duration" value="">
+            <input type="hidden" id = "size" name = "size" value="">
+          </form>
+      </div>
+</div>
+{% include 'videos.html' %}
+{% endblock content %}
